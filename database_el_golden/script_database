@@ -1,0 +1,22 @@
+CREATE DATABASE db_challenge
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+	
+CREATE SEQUENCE tb_category_id_seq;	
+CREATE TABLE tb_category (
+	id integer NOT NULL DEFAULT nextval('tb_category_id_seq') PRIMARY KEY,
+	name_category varchar(40)
+);
+
+CREATE SEQUENCE tb_device_id_seq;
+CREATE TABLE tb_device (
+	id integer NOT NULL DEFAULT nextval('tb_device_id_seq') PRIMARY KEY,
+	category varchar(40) NOT NULL,
+	color varchar(20) NOT NULL,
+	part_number integer
+);
