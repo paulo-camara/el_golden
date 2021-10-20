@@ -1,13 +1,8 @@
 const { Client } = require('pg');
+const config_database_env = require('./configs');
 
 const _query = async (query, values, callback) => {
-    const client = new Client({
-        host: 'localhost',
-        port: 5432,
-        user: "postgres",
-        password: "011422",
-        database: "db_challenge"
-    });
+    const client = new Client(config_database_env(process.argv.slice(2)));
 
     try {
         await client.connect();

@@ -15,5 +15,5 @@ require('./Endpoints/ManagementDevice/setDevice')(app);
 require('./Endpoints/ManagementDevice/deleteDevice')(app);
 
 app.listen(8080, () => {
-    console.log('API it\'s runing...');
+    console.log('API it\'s runing...', process.argv.slice(2));
 });
