@@ -1,0 +1,10 @@
+.input-field {
+    text-transform: uppercase;
+    font-size: 13px;
+    width: 250px;
+    height: 30px;
+    border-radius: 3px;
+    border: 1px solid rgb(208, 208, 214);
+    margin: 10px;
+    outline: 0;
+}
