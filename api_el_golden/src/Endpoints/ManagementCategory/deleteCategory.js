@@ -3,7 +3,7 @@ const router = express.Router();
 
 const _query = require('../../database');
 
-router.delete('/delete_category', (req, resp) => {
+router.post('/delete_category', (req, resp) => {
     const callback = () => resp.send('success');
 
     const { id } = req.body;

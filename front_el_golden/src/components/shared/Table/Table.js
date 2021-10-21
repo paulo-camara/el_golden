@@ -1,23 +1,6 @@
 import React from 'react';
 
-export const Table = () => {
-    const columns = [{
-        Header: 'ID',
-        accessor: 'id',
-        minWidth: '300px'
-    },
-    {
-        Header: 'Nome da Categoria',
-        accessor: 'name',
-        minWidth: '300px'
-    },
-    {
-        Header: 'Nome da Categoria',
-        accessor: 'name',
-    }];
-
-    const data = [{ id: 123, name: 'paulo' }, { id: 321, name: "camara" }]
-
+export const Table = ({ data, columns }) => {
     return <div className="table">
         {columns.map((item) => {
             return <div>
@@ -26,7 +9,7 @@ export const Table = () => {
                 </div>
                 <div>{data.map((elem) => {
                     return <div className="row" style={{ minWidth: item.minWidth }}>
-                        {elem[item.accessor]}
+                        {!elem[item.accessor] && item.component ? item.component(elem.id) : <div className="data-row">{elem[item.accessor]}</div>}
                     </div>
                 })}</div>
             </div>
