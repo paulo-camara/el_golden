@@ -8,7 +8,7 @@ router.post('/delete_device', (req, resp) => {
 
     const { id } = req.body;
 
-    _query(`DELETE FROM tb_device WHERE id=$1`, [id], callback);
+    _query(`DELETE FROM tb_device WHERE id_device=$1`, [id], callback);
 });
 
 module.exports = app => app.use('/management_device', router);
