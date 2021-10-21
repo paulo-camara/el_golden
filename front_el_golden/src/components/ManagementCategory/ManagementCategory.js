@@ -3,7 +3,7 @@ import { Input } from '../shared/Input/Input';
 import { Button } from '../shared/Button/Button';
 import { Table } from '../shared/Table/Table'
 import { Loader } from '../shared/Loader/Loader';
-
+import { Modal } from '../shared/Modal/Modal';
 import { GetApiRoutes } from '../../scripts/ApiRoutes';
 import { api } from '../../scripts/Request';
 import toastr from 'toastr';
@@ -12,6 +12,8 @@ export const ManagementCategory = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [categoryValue, setCategoryValue] = useState("");
     const [dataTable, setDataTable] = useState([]);
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [itemSelected, setItemSelected] = useState(null);
 
     const columnsTable = [{
         Header: 'ID',
@@ -25,7 +27,14 @@ export const ManagementCategory = () => {
     },
     {
         Header: 'Excluir',
-        component: (id) => <Button onClick={() => _deleteItem(id)} title={'Excluir'} />
+        component: (item) => <div style={{ height: '40px', width: '40px', paddingLeft: '10px', cursor: 'pointer' }}>
+            <img style={{
+                height: '100%', width: '100%'
+            }} src={"https://e7.pngegg.com/pngimages/817/816/png-clipart-computer-icons-delete-icon-android-handheld-devices.png"} onClick={() => {
+                setItemSelected(item);
+                setIsOpenModal(true);
+            }} />
+        </div>
     }];
 
     useEffect(() => {
@@ -36,11 +45,12 @@ export const ManagementCategory = () => {
         setCategoryValue(value);
     };
 
-    const _deleteItem = async (id) => {
+    const _deleteItem = async () => {
         const success = () => {
             toastr.success('Categoria excluida com sucesso');
             setIsLoading(false);
             getCategories();
+            setIsOpenModal(false);
         };
 
         const fail = () => {
@@ -48,7 +58,7 @@ export const ManagementCategory = () => {
         };
 
         try {
-            const result = await api.post(GetApiRoutes('DeleteCategory'), { id });
+            const result = await api.post(GetApiRoutes('DeleteCategory'), { id: itemSelected.id });
 
             success(result);
         } catch (error) {
@@ -121,10 +131,15 @@ export const ManagementCategory = () => {
                 />
                 <Button className="test" title={"Salvar"} onClick={_save} />
             </div>
-
             <div class="table-categories">
                 <Table data={dataTable} columns={columnsTable} />
             </div>
+            <Modal
+                title={"Confirmar exclusão"}
+                isOpen={isOpenModal}
+                message={`Deseja excluir a categoria ${itemSelected.id} - ${itemSelected.name_category.toUpperCase()}?`}
+                onConfirm={_deleteItem}
+                onCancel={() => setIsOpenModal(false)} />
         </div>
     );
 };

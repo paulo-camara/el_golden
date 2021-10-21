@@ -9,7 +9,7 @@ export const Table = ({ data, columns }) => {
                 </div>
                 <div>{data.map((elem) => {
                     return <div className="row" style={{ minWidth: item.minWidth }}>
-                        {!elem[item.accessor] && item.component ? item.component(elem.id) : <div className="data-row">{elem[item.accessor]}</div>}
+                        {!elem[item.accessor] && item.component ? item.component(elem) : <div className="data-row">{elem[item.accessor]}</div>}
                     </div>
                 })}</div>
             </div>

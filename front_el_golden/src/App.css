@@ -8,6 +8,7 @@
 @import './components/Home/Home.css';
 @import './components/Layout/Layout.css';
 @import './components/ManagementCategory/ManagementCategory.css';
+@import './components/shared/Modal/Modal.css';
 
 .color-background-page {
     background-color: #f1f4f6;
