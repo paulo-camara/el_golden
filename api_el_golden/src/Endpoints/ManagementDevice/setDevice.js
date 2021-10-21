@@ -12,7 +12,7 @@ const _validateFields = (bodyFields) => {
         color: () => {
             var regex = new RegExp("^[a-zA-Z ]*$");
 
-            return bodyFields.color.lenght <= 16 && regex.test();
+            return bodyFields.color.length <= 16 && regex.test();
         }
     };
 
@@ -29,14 +29,14 @@ const _validateFields = (bodyFields) => {
 
 router.post('/set_device', (req, resp) => {
     const isValid = _validateFields(req.body);
-    
-    if (!isValid) resp.send(HandlerError(400));
+
+    if (!isValid) return resp.send(HandlerError(400));
 
     const callback = () => resp.send('success');
 
-    const { category, color, part_number } = req.body;
+    const { name_category, color, part_number } = req.body;
 
-    _query(`INSERT INTO tb_device(category, color, part_number) values($1, $2, $3)`, [category, color, part_number], callback);
+    _query(`INSERT INTO tb_device(category, color, part_number) values($1, $2, $3)`, [name_category, color, part_number], callback);
 });
 
 module.exports = app => app.use('/management_device', router);

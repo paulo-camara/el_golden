@@ -1,0 +1,12 @@
+.title-page {
+    font-size: 40px;
+    font-weight: none;
+    color: #3064a8;
+}
+
+.title-page-container {
+    width: 100%;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}

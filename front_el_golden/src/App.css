@@ -9,6 +9,9 @@
 @import './components/Layout/Layout.css';
 @import './components/ManagementCategory/ManagementCategory.css';
 @import './components/shared/Modal/Modal.css';
+@import './components/ManagementDevice/ManagementDevice.css';
+@import './components/shared/TrashButton/TrashButton.css';
+@import './components/shared/TitlePage/TitlePage.css';
 
 .color-background-page {
     background-color: #f1f4f6;

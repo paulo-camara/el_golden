@@ -4,6 +4,8 @@ import { Button } from '../shared/Button/Button';
 import { Table } from '../shared/Table/Table'
 import { Loader } from '../shared/Loader/Loader';
 import { Modal } from '../shared/Modal/Modal';
+import { TrashButton } from '../shared/TrashButton/TrashButton';
+import { TitlePage } from '../shared/TitlePage/TitlePage';
 import { GetApiRoutes } from '../../scripts/ApiRoutes';
 import { api } from '../../scripts/Request';
 import toastr from 'toastr';
@@ -13,7 +15,7 @@ export const ManagementCategory = () => {
     const [categoryValue, setCategoryValue] = useState("");
     const [dataTable, setDataTable] = useState([]);
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [itemSelected, setItemSelected] = useState(null);
+    const [itemSelected, setItemSelected] = useState({ name_category: '', id: '' });
 
     const columnsTable = [{
         Header: 'ID',
@@ -27,17 +29,10 @@ export const ManagementCategory = () => {
     },
     {
         Header: 'Excluir',
-        component: (item) => <div style={{ height: '30px', width: '30px', paddingLeft: '15px', cursor: 'pointer' }}>
-            <img
-                style={{
-                    height: '100%', width: '100%'
-                }}
-                src={"https://w7.pngwing.com/pngs/271/838/png-transparent-computer-icons-delete-icon-white-text-logo.png"}
-                onClick={() => {
-                    setItemSelected(item);
-                    setIsOpenModal(true);
-                }} />
-        </div>
+        component: (item) => <TrashButton onClick={() => {
+            setItemSelected(item);
+            setIsOpenModal(true);
+        }} />
     }];
 
     useEffect(() => {
@@ -126,6 +121,7 @@ export const ManagementCategory = () => {
 
     return (
         <div className="color-background-page management-category">
+            <TitlePage title="Gerenciamento de Categorias" />
             <Loader isLoading={isLoading} />
             <div className="input-create-category">
                 <Input
