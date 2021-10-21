@@ -15,6 +15,7 @@
 }
 
 .headers {
+    color: #5a5454;
     text-transform: capitalize;
     padding-bottom: 15px;
     font-size: 20px;
