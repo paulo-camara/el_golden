@@ -34,9 +34,9 @@ router.post('/set_device', (req, resp) => {
 
     const callback = () => resp.send('success');
 
-    const { name_category, color, part_number } = req.body;
+    const { category, color, part_number } = req.body;
 
-    _query(`INSERT INTO tb_device(category, color, part_number) values($1, $2, $3)`, [name_category, color, part_number], callback);
+    _query(`INSERT INTO tb_device(category, color, part_number) values($1, $2, $3)`, [category, color, part_number], callback);
 });
 
 module.exports = app => app.use('/management_device', router);
