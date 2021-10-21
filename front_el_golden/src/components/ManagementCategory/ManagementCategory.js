@@ -27,13 +27,16 @@ export const ManagementCategory = () => {
     },
     {
         Header: 'Excluir',
-        component: (item) => <div style={{ height: '40px', width: '40px', paddingLeft: '10px', cursor: 'pointer' }}>
-            <img style={{
-                height: '100%', width: '100%'
-            }} src={"https://e7.pngegg.com/pngimages/817/816/png-clipart-computer-icons-delete-icon-android-handheld-devices.png"} onClick={() => {
-                setItemSelected(item);
-                setIsOpenModal(true);
-            }} />
+        component: (item) => <div style={{ height: '30px', width: '30px', paddingLeft: '15px', cursor: 'pointer' }}>
+            <img
+                style={{
+                    height: '100%', width: '100%'
+                }}
+                src={"https://w7.pngwing.com/pngs/271/838/png-transparent-computer-icons-delete-icon-white-text-logo.png"}
+                onClick={() => {
+                    setItemSelected(item);
+                    setIsOpenModal(true);
+                }} />
         </div>
     }];
 
@@ -67,16 +70,18 @@ export const ManagementCategory = () => {
     };
 
     const _save = async () => {
-        if (!categoryValue) toastr.error("Prencha o campo com o nome da Categoria")
+        if (!categoryValue) return toastr.error("Prencha o campo com o nome da Categoria")
 
         const success = () => {
             toastr.success('Categoria criada com sucesso');
             setIsLoading(false);
+            setCategoryValue('');
             getCategories();
         };
 
         const fail = () => {
             setIsLoading(false);
+            setCategoryValue('');
         };
 
         const payload = {
