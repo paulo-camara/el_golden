@@ -130,7 +130,7 @@ export const ManagementCategory = () => {
                     onChange={_onChange}
                     style={{ width: '400px' }}
                 />
-                <Button className="test" title={"Salvar"} onClick={_save} />
+                <Button className="test" title={"SALVAR"} onClick={_save} />
             </div>
             <div class="table-categories">
                 <Table data={dataTable} columns={columnsTable} />

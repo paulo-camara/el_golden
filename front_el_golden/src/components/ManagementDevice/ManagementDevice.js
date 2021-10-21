@@ -157,7 +157,7 @@ export const ManagementDevice = () => {
                     onChange={setPartNumberValue}
                     style={{ width: '200px' }}
                 />
-                <Button title={"Salvar"} onClick={_save} />
+                <Button title={"SALVAR"} onClick={_save} />
             </div>
             <div class="table-categories">
                 <Table data={dataTable} columns={columnsTable} />
