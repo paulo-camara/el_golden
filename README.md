@@ -13,7 +13,7 @@ Para criar o front-end foi usado React.JS, criando componente com React Hooks, r
 ## Deploy
 Para uma melhor visualização foi feito deploy do front-end no AWS S3. Foi feito também o deploy do back-end e banco de dados, porém por questões de custo a maquina EC2 e RDS foram desligados e por conta disso o front-end foi feito deploy com dados fakes.
 
-Link do S3 bucket: http://management-eldorado.s3-website-us-east-1.amazonaws.com/home
+Link do S3 bucket: http://management-eldorado.s3-website-us-east-1.amazonaws.com
 
 ## Start no projeto front-end
 ```
