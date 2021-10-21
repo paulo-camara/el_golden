@@ -1,0 +1,20 @@
+.table {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgb(179, 174, 174);
+    margin: 15px;
+}
+
+.headers {
+    text-transform: capitalize;
+    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 15px;
+    border-bottom: 3px solid #1f7ac9;
+}
