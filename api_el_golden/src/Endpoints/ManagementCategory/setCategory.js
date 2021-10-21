@@ -11,11 +11,17 @@ const _validateFields = (fields) => {
 };
 
 router.post('/set_category', (req, resp) => {
-    const isValid = _validateFields(req.body);
+    const { name_category } = req.body;
 
-    if (!isValid) resp.send(HandlerError(400));
+    const callback = () => {
+        const isValid = _validateFields(req.body);
 
-    const callback = () => resp.send('success');
+        if (!isValid) {
+            resp.send(HandlerError(400));
+        } else {
+            resp.send('success');
+        }
+    }
 
     _query(`INSERT INTO tb_category(name_category) values($1)`, [name_category], callback);
 });

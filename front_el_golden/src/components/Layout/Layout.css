@@ -1,7 +1,11 @@
 .title-principal {
     color: #FFFFFF;
-    font-size: 40px;
+    font-size: 35px;
     margin: 30px;
+}
+
+.container-layout {
+    padding-bottom: 5px;
 }
 
 .layout {

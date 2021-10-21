@@ -1,4 +1,6 @@
 .loader-container {
+   background-color: #000000;
+   opacity: 0.7;
    position: fixed;
    height: 100%; 
    width: 100%;
@@ -10,10 +12,10 @@
 }
 
 .loading {
-    width: 200px;
-    height: 200px;
-    border: 5px solid rgb(180, 167, 167);
-    border-top-color: rgb(226, 226, 231);
+    width: 100px;
+    height: 100px;
+    border: 7px solid #3064a838;
+    border-top-color: #3064a8;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
