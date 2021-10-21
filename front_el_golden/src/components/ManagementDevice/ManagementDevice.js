@@ -15,11 +15,10 @@ export const ManagementDevice = () => {
     const [dataTable, setDataTable] = useState([]);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [itemSelected, setItemSelected] = useState({ category: '', id: '' });
-
-    const [nameCategoryValue, setNameCategoryValue] = useState('');
-    const [codeCategoryValue, setCodeCategoryValue] = useState(null);
     const [colorDeviceValue, setColorDeviceValue] = useState('');
     const [partNumberValue, setPartNumberValue] = useState(null);
+    const [categories, setCategories] = useState([]);
+    const [categorySelected, setCategorySelected] = useState({});
 
     const columnsTable = [{
         Header: 'ID',
@@ -27,8 +26,8 @@ export const ManagementDevice = () => {
         width: '200px'
     },
     {
-        Header: 'Nome da Categoria',
-        accessor: 'category',
+        Header: 'Categoria',
+        accessor: 'name_category',
         width: '400px'
     },
     {
@@ -50,7 +49,7 @@ export const ManagementDevice = () => {
     }];
 
     useEffect(() => {
-        getDevices();
+        _getCategories();
     }, []);
 
     const _deleteItem = async () => {
@@ -79,6 +78,7 @@ export const ManagementDevice = () => {
             toastr.success('Dispositivo criado com sucesso');
             setIsLoading(false);
             getDevices();
+            _clearFields();
         };
 
         const fail = () => {
@@ -86,7 +86,7 @@ export const ManagementDevice = () => {
         };
 
         const payload = {
-            name_category: nameCategoryValue,
+            category: categorySelected.id,
             color: colorDeviceValue,
             part_number: parseInt(partNumberValue)
         };
@@ -98,12 +98,6 @@ export const ManagementDevice = () => {
         } catch (error) {
             fail(error);
         }
-    };
-
-    const _orderByDesc = (data) => {
-        return data.sort(function (a, b) {
-            return a.id > b.id ? -1 : a.nome > b.nome ? 1 : 0;
-        });
     };
 
     const getDevices = async () => {
@@ -127,9 +121,33 @@ export const ManagementDevice = () => {
         }
     };
 
+    const _getCategories = async () => {
+        const success = (data) => {
+            setIsLoading(false);
+            setCategories(data);
+            getDevices();
+        };
+
+        const fail = () => {
+            setIsLoading(false);
+        };
+
+        try {
+            const result = await api.get(GetApiRoutes('GetCategories'));
+
+            success(result.data);
+        } catch (error) {
+            fail(error);
+        }
+    };
+
+    const _orderByDesc = (data) => {
+        return data.sort(function (a, b) {
+            return a.id > b.id ? -1 : a.nome > b.nome ? 1 : 0;
+        });
+    };
+
     const _clearFields = () => {
-        setNameCategoryValue('')
-        setCodeCategoryValue(null);
         setColorDeviceValue('');
         setPartNumberValue(null);
     };
@@ -139,12 +157,12 @@ export const ManagementDevice = () => {
             <TitlePage title="Gerenciamento de Dispositivos" />
             <Loader isLoading={isLoading} />
             <div className="input-create-device">
-                <Input
-                    placeholder={"Digite o nome da categoria a ser criada"}
-                    value={nameCategoryValue}
-                    onChange={setNameCategoryValue}
-                    style={{ width: '400px' }}
-                />
+                <select className="combo-categories" onChange={({ target }) => setCategorySelected({ name_category: '-', id: target.value })}>
+                    <option value={null}>Selecione</option>
+                    {categories.map((item) => {
+                        return <option value={item.id}>{item.name_category}</option>
+                    })}
+                </select>
                 <Input
                     placeholder={"Digite a cor"}
                     value={colorDeviceValue}
@@ -168,6 +186,6 @@ export const ManagementDevice = () => {
                 message={`Deseja excluir a categoria ${itemSelected.id} - ${itemSelected.category.toUpperCase()}?`}
                 onConfirm={_deleteItem}
                 onCancel={() => setIsOpenModal(false)} />
-        </div>
+        </div >
     );
 };
