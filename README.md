@@ -1,4 +1,4 @@
-# Gerenciador El-Golden
+# Gerenciador
 
 ## Descrição
 
@@ -9,6 +9,11 @@ Sistema desenvolvido como desafio de processo seletivo. Possui duas telas, sendo
 Para criar o back-end foi usado NODE.js com base de dados com PostgresSQl.
 
 Para criar o front-end foi usado React.JS, criando componente com React Hooks, requests utilizando Axios. Durante o desenvolvimento, foi usado a menor quantidade de bibiliotecas possiveis, para que fosse possivel analisar mais precisamente a questão de código.
+
+## Deploy
+Foi feito deploy do front-end no AWS S3. Foi feito também o deploy do back-end e banco de dados, porém por questões de custo a maquina EC2 e RDS foram desligados.
+
+Link do S3 bucket: http://management-eldorado.s3-website-us-east-1.amazonaws.com/home
 
 ## Start no projeto front-end
 ```
