@@ -2,3 +2,15 @@
 @import './components/shared/Input/Input.css';
 @import './components/shared/Button/Button.css';
 @import './components/shared/Table/Table.css';
+@import './components/Menu/ItemMenu/ItemMenu.css';
+@import './components/Menu/Menu.css';
+@import './components/Home/Home.css';
+@import './components/Layout/Layout.css';
+
+.color-background-page {
+    background-color: #f1f4f6;
+}
+
+body {
+    font-family: sans-serif;
+}
