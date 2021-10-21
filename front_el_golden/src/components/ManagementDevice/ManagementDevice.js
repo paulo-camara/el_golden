@@ -14,7 +14,7 @@ export const ManagementDevice = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [dataTable, setDataTable] = useState([]);
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const [itemSelected, setItemSelected] = useState({ category: '', id: '' });
+    const [itemSelected, setItemSelected] = useState({ name_category: '', id: '' });
     const [colorDeviceValue, setColorDeviceValue] = useState('');
     const [partNumberValue, setPartNumberValue] = useState(null);
     const [categories, setCategories] = useState([]);
@@ -86,7 +86,7 @@ export const ManagementDevice = () => {
         };
 
         const payload = {
-            category: categorySelected.id,
+            category: parseInt(categorySelected.id),
             color: colorDeviceValue,
             part_number: parseInt(partNumberValue)
         };
@@ -187,7 +187,7 @@ export const ManagementDevice = () => {
             <Modal
                 title={"Confirmar exclusão"}
                 isOpen={isOpenModal}
-                message={`Deseja excluir a categoria ${'itemSelected.id'} - ${'itemSelected.category.toUpperCase()'}?`}
+                message={`Deseja excluir a categoria ${itemSelected.id} - ${itemSelected.name_category.toUpperCase()}?`}
                 onConfirm={_deleteItem}
                 onCancel={() => setIsOpenModal(false)} />
         </div >
