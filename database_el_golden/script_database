@@ -15,7 +15,7 @@ CREATE TABLE tb_category (
 
 CREATE SEQUENCE tb_device_id_seq;
 CREATE TABLE tb_device (
-	id integer NOT NULL DEFAULT nextval('tb_device_id_seq') PRIMARY KEY,
+	id_device integer NOT NULL DEFAULT nextval('tb_device_id_seq') PRIMARY KEY,
 	category integer,
 	color varchar(20) NOT NULL,
 	part_number integer

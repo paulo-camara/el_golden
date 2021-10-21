@@ -22,7 +22,7 @@ export const ManagementDevice = () => {
 
     const columnsTable = [{
         Header: 'ID',
-        accessor: 'id',
+        accessor: 'id_device',
         width: '200px'
     },
     {
@@ -65,7 +65,7 @@ export const ManagementDevice = () => {
         };
 
         try {
-            const result = await api.post(GetApiRoutes('DeleteDevice'), { id: itemSelected.id });
+            const result = await api.post(GetApiRoutes('DeleteDevice'), { id: itemSelected.id_device });
 
             success(result);
         } catch (error) {
@@ -90,6 +90,10 @@ export const ManagementDevice = () => {
             color: colorDeviceValue,
             part_number: parseInt(partNumberValue)
         };
+
+        if (!payload.category || !payload.color || !payload.part_number) {
+            return toastr.error('Preencha os campos corretamente');
+        }
 
         try {
             const result = await api.post(GetApiRoutes('SetDevice'), payload);
@@ -143,13 +147,13 @@ export const ManagementDevice = () => {
 
     const _orderByDesc = (data) => {
         return data.sort(function (a, b) {
-            return a.id > b.id ? -1 : a.nome > b.nome ? 1 : 0;
+            return a.id_device > b.id_device ? -1 : a.nome > b.nome ? 1 : 0;
         });
     };
 
     const _clearFields = () => {
         setColorDeviceValue('');
-        setPartNumberValue(null);
+        setPartNumberValue('');
     };
 
     return (
@@ -183,7 +187,7 @@ export const ManagementDevice = () => {
             <Modal
                 title={"Confirmar exclusão"}
                 isOpen={isOpenModal}
-                message={`Deseja excluir a categoria ${itemSelected.id} - ${itemSelected.category.toUpperCase()}?`}
+                message={`Deseja excluir a categoria ${'itemSelected.id'} - ${'itemSelected.category.toUpperCase()'}?`}
                 onConfirm={_deleteItem}
                 onCancel={() => setIsOpenModal(false)} />
         </div >
