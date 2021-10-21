@@ -13,7 +13,7 @@ export const Menu = () => {
              <ItemMenu
                 title={"Gerenciamento de Dispositivos"}
                 redirectTo={'/management-device'}
-                icon={"http://cdn.icon-icons.com/icons2/1875/PNG/512/devices_119983.png"}
+                icon={"https://i.dlpng.com/static/png/5537455-phone-icon-png-mobile-phone-icon-circle-png-free-png-images-png-phone-920_960_preview.png"}
             />
         </div>
     )
