@@ -1,8 +1,7 @@
 # Gerenciador
 
 ## Descrição
-
-Sistema desenvolvido como desafio de processo seletivo. Possui duas telas, sendo elas Gerenciamento de Categorias e Gerenciamento de Dispositivos, onde é possivel gravar novas categorias e dispositivos. 
+O Projeto possui duas telas, sendo elas Gerenciamento de Categorias e Gerenciamento de Dispositivos, onde é possivel gravar novas categorias e dispositivos. 
 
 ## Tecnologias
 
